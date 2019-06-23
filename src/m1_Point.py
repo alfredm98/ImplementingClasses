@@ -67,7 +67,7 @@ class Point():
 
     def move_by(self, dx, dy):
         import math
-        self.distance = self.distance + math.sqrt((self.x - dx) ** 2 + (self.y - dy) ** 2)
+        self.distance = self.distance + math.sqrt((dx) ** 2 + (dy) ** 2)
         self.x = self.x + dx
         self.y = self.y + dy
         self.moves = self.moves + 1
