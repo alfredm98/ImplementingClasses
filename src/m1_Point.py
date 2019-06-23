@@ -49,6 +49,8 @@ class Point():
         self.y = y
         self.moves = 0
         self.distance = 0
+        self.startx = 0
+        self.starty = 0
 
     def __repr__(self):
         return 'Point(%s, %s)' % (self.x, self.y)  # This format came from online source
@@ -59,7 +61,11 @@ class Point():
 
     def move_to(self, x, y):
         import math
-        self.distance = self.distance + math.sqrt((self.x - x)**2 + (self.y - y)**2)
+        dx = x - self.x
+        dy = y - self.y
+        self.distance = self.distance + math.sqrt(dx**2 + dy**2)
+        self.startx = self.startx + dx
+        self.starty = self.starty + dy
         self.x = x
         self.y = y
         self.moves = self.moves + 1
@@ -70,6 +76,8 @@ class Point():
         self.distance = self.distance + math.sqrt((dx) ** 2 + (dy) ** 2)
         self.x = self.x + dx
         self.y = self.y + dy
+        self.startx = self.startx + dx
+        self.starty = self.starty + dy
         self.moves = self.moves + 1
 
     def get_number_of_moves_made(self):
@@ -83,8 +91,10 @@ class Point():
         return distance
 
     def get_distance_from_start(self):
-        start_point = self
-        return self.get_distance_from(start_point)
+        import math
+        start_distance = math.sqrt(self.startx**2 + self.starty**2)
+        return start_distance
+
 
     def get_distance_traveled(self):
         return self.distance
