@@ -90,7 +90,16 @@ class Point():
         return self.distance
 
     def closer_to(self, p1, p2):
-        pass
+        import math
+        distance1 = math.sqrt((self.x - p1.x)**2 + (self.y - p1.y)**2)
+        distance2 = math.sqrt((self.x - p2.x)**2 + (self.y - p2.y)**2)
+        if distance1 > distance2:
+            answer = p2
+        elif distance2 > distance1:
+            answer = p1
+        else:
+            answer = p1
+        return answer
 
     def halfway_to(self, p1):
         x = (self.x + p1.x)/2
